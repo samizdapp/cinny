@@ -1,5 +1,5 @@
 ## Builder
-FROM node:17.9.0-alpine3.15 as builder
+FROM node:17.9.0-alpine3.15
 
 WORKDIR /src
 
@@ -9,10 +9,3 @@ COPY . /src/
 RUN npm run build
 
 
-## App
-FROM nginx:1.21.6-alpine
-
-COPY --from=builder /src/dist /app
-
-RUN rm -rf /usr/share/nginx/html \
-  && ln -s /app /usr/share/nginx/html
