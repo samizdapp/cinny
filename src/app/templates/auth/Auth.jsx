@@ -72,7 +72,8 @@ function Homeserver({ onChange }) {
         if (searchingHs !== servername) return;
         onChange({ baseUrl, login: loginFlow, register: registerFlow });
         setProcess({ isLoading: false });
-      }).catch(() => {
+      }).catch((e) => {
+        console.error(e)
         if (searchingHs !== servername) return;
         onChange(null);
         setProcess({ isLoading: false, error: 'Unable to connect. Please check your input.' });

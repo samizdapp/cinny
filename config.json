@@ -1,7 +1,7 @@
 {
-  "defaultHomeserver": 4,
+  "defaultHomeserver": 0,
   "homeserverList": [
-    "converser.eu",
+    "synapse",
     "envs.net",
     "halogen.city",
     "kde.org",
