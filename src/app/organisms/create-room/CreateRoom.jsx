@@ -33,6 +33,8 @@ import SpaceGlobeIC from '../../../../public/res/ic/outlined/space-globe.svg';
 import ChevronBottomIC from '../../../../public/res/ic/outlined/chevron-bottom.svg';
 import CrossIC from '../../../../public/res/ic/outlined/cross.svg';
 
+const normalizeHs = (str) => str.length > 16 ? `${str.substr(0, 6)}...${str.substr(str.length - 6)}` : str
+
 function CreateRoomContent({ isSpace, parentId, onRequestClose }) {
   const [joinRule, setJoinRule] = useState(parentId ? 'restricted' : 'invite');
   const [isEncrypted, setIsEncrypted] = useState(true);
@@ -46,7 +48,7 @@ function CreateRoomContent({ isSpace, parentId, onRequestClose }) {
   const addressRef = useRef(null);
 
   const mx = initMatrix.matrixClient;
-  const userHs = getIdServer(mx.getUserId());
+  const userHs = normalizeHs(getIdServer(mx.getUserId()));
 
   useEffect(() => {
     const { roomList } = initMatrix;
